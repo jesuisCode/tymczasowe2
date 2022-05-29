@@ -37,14 +37,17 @@ def testA():
         
     except Exception as e:
         print(e)
-        
 
+        
+# Poniżej, ze względu na brak jasności co oznacza stwierdzenie 'displayed at the top' podjąłem pewne założenia że obiekt znajduje się w górnej cześci strony zdefiniowanej 
+# jako ~25% strony w pierwszym widoku. Oczywiście moje zakładanie czegokolwiek wynika z małej ilości wolnego czasu i jak już usiadłem i pisałem kod to zrobiłem wszystko od razu.
+# W normalnym pryzypadku zapytałbym przełożonego bądź klienta o zdefiniowanie pojęcia. 
 
 def testB():
     try:
-        driver.set_window_size(1024, 768)   # Tutaj, ze względu na brak jasności co oznacza stwierdzenie 'displayed at the top' podjąłem pewne założenia że obiekt znajduje się w górnej cześci strony zdefiniowanej 
-        driver.get("https://www.cyberalpaca.com/")  # jako ~25% strony w pierwszym widoku. Oczywiście moje zakładanie czegokolwiek wynika z małej ilości wolnego czasu i jak już usiadłem i pisałem kod to zrobiłem wszystko od razu.
-        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, '/html/body/div/div/div[1]/a[3]'))).click()  # W normalnym pryzypadku zapytałbym przełożonego bądź klienta o zdefiniowanie pojęcia. 
+        driver.set_window_size(1024, 768)   
+        driver.get("https://www.cyberalpaca.com/")  
+        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, '/html/body/div/div/div[1]/a[3]'))).click()  
         location = WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, '/html/body/div/main/section[1]/div[1]/div/div[1]/h1'))).location
         if location["y"] <200:
             print('----PASS2a----')
